@@ -1,0 +1,248 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --bg-soft: rgba(14, 24, 38, 0.72);
+  --panel: rgba(17, 25, 40, 0.82);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text: #ecf3ff;
+  --muted: #9fb3c8;
+  --accent: #66b3ff;
+  --accent-2: #7c5cff;
+  --success: #3dd9a3;
+  --danger: #ff7b8a;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(124, 92, 255, 0.16), transparent 35%),
+    radial-gradient(circle at top right, rgba(102, 179, 255, 0.14), transparent 30%),
+    linear-gradient(180deg, #07111f 0%, #091521 100%);
+  color: var(--text);
+}
+
+body {
+  min-width: 320px;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(102, 179, 255, 0.12);
+  border: 1px solid rgba(102, 179, 255, 0.18);
+  color: #cde6ff;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 3vw, 3.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.card {
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-card,
+.empty-state,
+.error-card,
+.non-coding-card {
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #dbe8f6;
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 180px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(6, 11, 20, 0.9);
+  color: var(--text);
+  border-radius: 18px;
+  padding: 16px;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+.textarea:focus {
+  border-color: rgba(102, 179, 255, 0.45);
+  box-shadow: 0 0 0 4px rgba(102, 179, 255, 0.08);
+}
+
+.form-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.helper-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 170px;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.output-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.output-card {
+  overflow: hidden;
+}
+
+.section-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.code-block {
+  margin: 0;
+  padding: 18px;
+  background: rgba(4, 9, 17, 0.92);
+  color: #d7e7ff;
+  overflow-x: auto;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.plain-text {
+  padding: 18px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.empty-state h2,
+.non-coding-card h2 {
+  margin-top: 0;
+}
+
+.error-card {
+  color: #ffd7de;
+  border-color: rgba(255, 123, 138, 0.2);
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.26;
+  z-index: 1;
+}
+
+.bg-orb-1 {
+  top: 80px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  background: #7c5cff;
+}
+
+.bg-orb-2 {
+  top: 240px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: #1b8fff;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 14px 60px;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
