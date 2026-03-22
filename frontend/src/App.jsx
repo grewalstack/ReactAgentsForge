@@ -31,7 +31,7 @@ export default function App() {
             });
 
             const data = await res.json();
-            if(!res.ok || !data.ok) {
+            if (!res.ok || !data.success) {
                 throw new Error(data.error || "Request failed");
             }
 

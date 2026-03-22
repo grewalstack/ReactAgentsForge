@@ -43,15 +43,15 @@ app.post("/api/assistant", async (req, res) => {
 
         return res.json({
             success: true,
-            isCodingQuestion: true,
-            data:{
+            isCodingQuestion: result.classification?.isCodingQuestion ?? true,
+            data: {
                 plan: result.plan,
                 code: result.code,
                 tests: result.tests,
                 docs: result.docs,
                 review: result.review,
-            }
-        })
+            },
+        });
 
     }catch(error){
         console.error("Assistant error:", error);

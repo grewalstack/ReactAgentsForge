@@ -1,16 +1,19 @@
 :root {
   color-scheme: dark;
-  --bg: #07111f;
-  --bg-soft: rgba(14, 24, 38, 0.72);
-  --panel: rgba(17, 25, 40, 0.82);
-  --panel-border: rgba(255, 255, 255, 0.08);
-  --text: #ecf3ff;
-  --muted: #9fb3c8;
-  --accent: #66b3ff;
-  --accent-2: #7c5cff;
-  --success: #3dd9a3;
-  --danger: #ff7b8a;
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  color-scheme: only dark;
+  --bg: #070708;
+  --bg-deep: #030304;
+  --bg-soft: rgba(22, 22, 26, 0.92);
+  --panel: rgba(18, 18, 22, 0.96);
+  --panel-border: rgba(255, 255, 255, 0.06);
+  --text: #e6e8ec;
+  --muted: #8a9099;
+  --accent: #9aa3b0;
+  --accent-2: #5c636d;
+  --moon: rgba(230, 236, 245, 0.04);
+  --success: #5fd4a8;
+  --danger: #f08996;
+  --shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
   --radius: 22px;
 }
 
@@ -18,28 +21,53 @@
   box-sizing: border-box;
 }
 
-html,
+button,
+textarea,
+input,
+select {
+  color-scheme: dark;
+}
+
+html {
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, var(--moon), transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.02), transparent 40%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 45%, #0e0f12 100%);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
 body,
 #root {
   min-height: 100%;
   margin: 0;
+  min-width: 320px;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(124, 92, 255, 0.16), transparent 35%),
-    radial-gradient(circle at top right, rgba(102, 179, 255, 0.14), transparent 30%),
-    linear-gradient(180deg, #07111f 0%, #091521 100%);
+  background-color: transparent;
   color: var(--text);
+  scrollbar-color: rgba(120, 128, 140, 0.45) rgba(8, 8, 10, 0.85);
 }
 
-body {
-  min-width: 320px;
+#root {
+  min-height: 100dvh;
+}
+
+::selection {
+  background: rgba(230, 236, 245, 0.14);
+  color: var(--text);
 }
 
 .app-shell {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
+  background-color: transparent;
+  color: inherit;
 }
 
 .container {
@@ -59,9 +87,9 @@ body {
   display: inline-block;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(102, 179, 255, 0.12);
-  border: 1px solid rgba(102, 179, 255, 0.18);
-  color: #cde6ff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c5cad3;
   font-size: 0.85rem;
   margin-bottom: 16px;
 }
@@ -102,15 +130,15 @@ body {
   margin-bottom: 10px;
   font-size: 0.96rem;
   font-weight: 600;
-  color: #dbe8f6;
+  color: #d1d5dc;
 }
 
 .textarea {
   width: 100%;
   resize: vertical;
   min-height: 180px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(6, 11, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(5, 5, 7, 0.92);
   color: var(--text);
   border-radius: 18px;
   padding: 16px;
@@ -119,9 +147,13 @@ body {
   outline: none;
 }
 
+.textarea::placeholder {
+  color: rgba(138, 144, 153, 0.55);
+}
+
 .textarea:focus {
-  border-color: rgba(102, 179, 255, 0.45);
-  box-shadow: 0 0 0 4px rgba(102, 179, 255, 0.08);
+  border-color: rgba(200, 210, 225, 0.28);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04);
 }
 
 .form-footer {
@@ -142,12 +174,13 @@ body {
   border: none;
   border-radius: 14px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: white;
+  background: linear-gradient(145deg, #6f7782 0%, #454a52 48%, #2e3238 100%);
+  color: #f4f5f7;
   font-weight: 700;
   cursor: pointer;
   min-width: 170px;
   transition: transform 0.18s ease, opacity 0.18s ease;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
 }
 
 .submit-btn:hover {
@@ -175,16 +208,18 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.section-header h3 {
+.section-header h2 {
   margin: 0;
   font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .code-block {
   margin: 0;
   padding: 18px;
-  background: rgba(4, 9, 17, 0.92);
-  color: #d7e7ff;
+  background: rgba(3, 3, 5, 0.95);
+  color: #cfd4dc;
   overflow-x: auto;
   font-size: 0.92rem;
   line-height: 1.65;
@@ -204,8 +239,8 @@ body {
 }
 
 .error-card {
-  color: #ffd7de;
-  border-color: rgba(255, 123, 138, 0.2);
+  color: #f5c4ca;
+  border-color: rgba(240, 137, 150, 0.22);
 }
 
 .bg-orb {
@@ -221,7 +256,7 @@ body {
   left: -60px;
   width: 260px;
   height: 260px;
-  background: #7c5cff;
+  background: #2a2c32;
 }
 
 .bg-orb-2 {
@@ -229,7 +264,7 @@ body {
   right: -80px;
   width: 300px;
   height: 300px;
-  background: #1b8fff;
+  background: #1c1d22;
 }
 
 @media (max-width: 768px) {

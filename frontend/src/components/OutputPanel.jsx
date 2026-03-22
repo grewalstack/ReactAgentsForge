@@ -10,7 +10,7 @@ export default function OutputPanel({response}) {
         );
     }
 
-    const {plan, code, tests, documentation, review} = response.data;
+    const { plan, code, tests, docs, review } = response.data;
     return (
         <section className="output-grid">
             <OutputSection
@@ -20,7 +20,7 @@ export default function OutputPanel({response}) {
             />
             <OutputSection title="Code" content={code} code/>
             <OutputSection title="Unit Tests" content={tests} code/>
-            <OutputSection title="Documentation" content={documentation} code/>
+            <OutputSection title="Documentation" content={docs} code/>
             <OutputSection
                 title="Review"
                 content={JSON.stringify(review, null, 2)}
